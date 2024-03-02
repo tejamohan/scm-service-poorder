@@ -23,9 +23,11 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 import jakarta.mail.internet.MimeMessage;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Service
+@Slf4j
 public class PurchaseOrderServiceImpl implements PurchseOrderService{
 	
     @Autowired
@@ -56,10 +58,12 @@ public class PurchaseOrderServiceImpl implements PurchseOrderService{
 	@Override
 	public boolean validateCredentials(String username, String password, String phoneNumber) throws Exception {
 		boolean sendOtp=false;
+		log.info("validate message started");
 		boolean verify=dao.validateCredentials(username, password);
 		if(verify) {
 			 sendOtp=sendOTP(username, phoneNumber);
 		}else {
+			log.error("Invalid credentials");
 			throw new Exception("Invalid credentials");
 		}
 		return sendOtp;
