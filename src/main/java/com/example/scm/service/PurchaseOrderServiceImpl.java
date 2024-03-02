@@ -59,12 +59,16 @@ public class PurchaseOrderServiceImpl implements PurchseOrderService{
 	public boolean validateCredentials(String username, String password, String phoneNumber) throws Exception {
 		boolean sendOtp=false;
 		log.info("validate message started");
+		try {
 		boolean verify=dao.validateCredentials(username, password);
 		if(verify) {
 			 sendOtp=sendOTP(username, phoneNumber);
 		}else {
 			log.error("Invalid credentials");
 			throw new Exception("Invalid credentials");
+		}
+		}catch(Exception e) {
+			log.error("Invalid credentials"+e);
 		}
 		return sendOtp;
 	}
