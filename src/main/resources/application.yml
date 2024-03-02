@@ -1,0 +1,43 @@
+server:
+  port: 7777
+
+
+twilio:
+  accountSid: AC2f9899df0531080f0d6783651679693b            
+  authToken: abcedd07e7a1b75db614532037f99a66
+  phoneNumber: +14152372425
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sys
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tejamunakala@gmail.com
+    password: wkaxyllxpzqvxguu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            
+            
+
+  
+  
+  
+      
